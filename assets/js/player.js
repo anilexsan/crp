@@ -260,16 +260,16 @@ window.addEventListener("message", function (e) {
 							//console.log("720p_mp4: " + video_720p_mp4_url);
 							//console.log("480p_mp4: " + video_480p_mp4_url);
 							//console.log("360p_mp4: " + video_360p_mp4_url);
-							//console.log("240p_mp4: " + video_240p_mp4_url) ;
+							//console.log("240p_mp4: " + video_240p_mp4_url);
 						}
 					});
 				}
 				
 				//Se o episodio for apenas para usuarios premium
 				if(is_ep_premium_only == true) {
-					var video_1080p_dash_playlist_url_no_clipe = video_m3u8_array[1].replace(/\/clipFrom\/0000\/clipTo\/.*\/index.m3u8/, "");
+					var video_1080p_dash_playlist_url_no_clipe = video_m3u8_array[1].replace("/clipFrom/0000/clipTo/" + video_config_media['metadata']['duration'] + "/index.m3u8", ",.urlset/manifest.mpd");
 					var video_1080p_dash_playlist_url = video_1080p_dash_playlist_url_no_clipe.replace(video_1080p_dash_playlist_url_no_clipe.split("_")[0] + "_", video_1080p_dash_playlist_url_no_clipe.split("_")[0] + "_,");
-					console.log("1080 - " + video_1080p_dash_playlist_url_no_clipe);
+					
 					$.ajax({
 						async: true,
 						type: "GET",
@@ -286,7 +286,7 @@ window.addEventListener("message", function (e) {
 						}
 					});
 					
-					var video_720p_dash_playlist_url_no_clipe = video_m3u8_array[0].replace(/\/clipFrom\/0000\/clipTo\/.*\/index.m3u8/, "");
+					var video_720p_dash_playlist_url_no_clipe = video_m3u8_array[0].replace("/clipFrom/0000/clipTo/" + video_config_media['metadata']['duration'] + "/index.m3u8", ",.urlset/manifest.mpd");
 					var video_720p_dash_playlist_url = video_720p_dash_playlist_url_no_clipe.replace(video_720p_dash_playlist_url_no_clipe.split("_")[0] + "_", video_720p_dash_playlist_url_no_clipe.split("_")[0] + "_,");
 					
 					$.ajax({
@@ -305,7 +305,7 @@ window.addEventListener("message", function (e) {
 						}
 					});
 					
-					var video_480p_dash_playlist_url_no_clipe = video_m3u8_array[2].replace(/\/clipFrom\/0000\/clipTo\/.*\/index.m3u8/, "");
+					var video_480p_dash_playlist_url_no_clipe = video_m3u8_array[2].replace("/clipFrom/0000/clipTo/" + video_config_media['metadata']['duration'] + "/index.m3u8", ",.urlset/manifest.mpd");
 					var video_480p_dash_playlist_url = video_480p_dash_playlist_url_no_clipe.replace(video_480p_dash_playlist_url_no_clipe.split("_")[0] + "_", video_480p_dash_playlist_url_no_clipe.split("_")[0] + "_,");
 					
 					$.ajax({
@@ -324,7 +324,7 @@ window.addEventListener("message", function (e) {
 						}
 					});
 					
-					var video_360p_dash_playlist_url_no_clipe = video_m3u8_array[3].replace(/\/clipFrom\/0000\/clipTo\/.*\/index.m3u8/, "");
+					var video_360p_dash_playlist_url_no_clipe = video_m3u8_array[3].replace("/clipFrom/0000/clipTo/" + video_config_media['metadata']['duration'] + "/index.m3u8", ",.urlset/manifest.mpd");
 					var video_360p_dash_playlist_url = video_360p_dash_playlist_url_no_clipe.replace(video_360p_dash_playlist_url_no_clipe.split("_")[0] + "_", video_360p_dash_playlist_url_no_clipe.split("_")[0] + "_,");
 					
 					$.ajax({
@@ -343,7 +343,7 @@ window.addEventListener("message", function (e) {
 						}
 					});
 					
-					var video_240p_dash_playlist_url_no_clipe = video_m3u8_array[4].replace(/\/clipFrom\/0000\/clipTo\/.*\/index.m3u8/, "");
+					var video_240p_dash_playlist_url_no_clipe = video_m3u8_array[4].replace("/clipFrom/0000/clipTo/" + video_config_media['metadata']['duration'] + "/index.m3u8", ",.urlset/manifest.mpd");
 					var video_240p_dash_playlist_url = video_240p_dash_playlist_url_no_clipe.replace(video_240p_dash_playlist_url_no_clipe.split("_")[0] + "_", video_240p_dash_playlist_url_no_clipe.split("_")[0] + "_,");
 					
 					$.ajax({
