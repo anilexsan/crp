@@ -269,7 +269,7 @@ window.addEventListener("message", function (e) {
 				if(is_ep_premium_only == true) {
 					var video_1080p_dash_playlist_url_no_clipe = video_m3u8_array[1].replace(/\/clipFrom\/0000\/clipTo\/.*\/index.m3u8/, "");
 					var video_1080p_dash_playlist_url = video_1080p_dash_playlist_url_no_clipe.replace(video_1080p_dash_playlist_url_no_clipe.split("_")[0] + "_", video_1080p_dash_playlist_url_no_clipe.split("_")[0] + "_,");
-					console.log("1080 - " + video_1080p_dash_playlist_url)
+					console.log("1080 - " + video_1080p_dash_playlist_url);
 					$.ajax({
 						async: true,
 						type: "GET",
