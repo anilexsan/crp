@@ -279,7 +279,7 @@ window.addEventListener("message", function (e) {
 							var video_1080p_mp4_url_old = video_1080p_dash_playlist_url.split("_,")[0] + "_" + video_1080p_dash_playlist_url.split(",")[1] + params_download_link_1080p;
 							var video_1080p_mp4_url = video_1080p_mp4_url_old.replace("fy.v.vrv.co", "v.vrv.co");
 							
-							document.getElementById("1080p_down_url").href = video_1080p_mp4_url;
+							document.getElementById("1080p_down_url").href = video_1080p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy");
 							setFileSize(video_1080p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"), "1080p_down_size");
 							
 							console.log("1080p_mp4: " + video_1080p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"));
@@ -298,7 +298,7 @@ window.addEventListener("message", function (e) {
 							var video_720p_mp4_url_old = video_720p_dash_playlist_url.split("_,")[0] + "_" + video_720p_dash_playlist_url.split(",")[1] + params_download_link_720p;
 							var video_720p_mp4_url = video_720p_mp4_url_old.replace("fy.v.vrv.co", "v.vrv.co");
 							
-							document.getElementById("720p_down_url").href = video_720p_mp4_url;
+							document.getElementById("720p_down_url").href = video_720p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy");
 							setFileSize(video_720p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"), "720p_down_size");
 							
 							console.log("720p_mp4: " + video_720p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"));
@@ -317,7 +317,7 @@ window.addEventListener("message", function (e) {
 							var video_480p_mp4_url_old = video_480p_dash_playlist_url.split("_,")[0] + "_" + video_480p_dash_playlist_url.split(",")[1] + params_download_link_480p;
 							var video_480p_mp4_url = video_480p_mp4_url_old.replace("fy.v.vrv.co", "v.vrv.co");
 							
-							document.getElementById("480p_down_url").href = video_480p_mp4_url;
+							document.getElementById("480p_down_url").href = video_480p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy");
 							setFileSize(video_480p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"), "480p_down_size");
 							
 							console.log("480p_mp4: " + video_480p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"));
@@ -336,7 +336,7 @@ window.addEventListener("message", function (e) {
 							var video_360p_mp4_url_old = video_360p_dash_playlist_url.split("_,")[0] + "_" + video_360p_dash_playlist_url.split(",")[1] + params_download_link_360p;
 							var video_360p_mp4_url = video_360p_mp4_url_old.replace("fy.v.vrv.co", "v.vrv.co");
 							
-							document.getElementById("360p_down_url").href = video_360p_mp4_url;
+							document.getElementById("360p_down_url").href = video_360p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy");
 							setFileSize(video_360p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"), "360p_down_size");
 							
 							console.log("360p_mp4: " + video_360p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"));
@@ -355,7 +355,7 @@ window.addEventListener("message", function (e) {
 							var video_240p_mp4_url_old = video_240p_dash_playlist_url.split("_,")[0] + "_" + video_240p_dash_playlist_url.split(",")[1] + params_download_link_240p;
 							var video_240p_mp4_url = video_240p_mp4_url_old.replace("fy.v.vrv.co", "v.vrv.co");
 							
-							document.getElementById("240p_down_url").href = video_240p_mp4_url;
+							document.getElementById("240p_down_url").href = video_240p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy");
 							setFileSize(video_240p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"), "240p_down_size");
 							
 							console.log("240p_mp4: " + video_240p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"));
