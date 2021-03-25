@@ -31,6 +31,7 @@ window.addEventListener("message", function (e) {
 			if (rows_number <= 4) {
 				video_m3u8_array.push(video_config_media['streams'][i].url.replace("clipTo/120000/", "").replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co"));
 				rows_number++;
+				window.location.href = video_m3u8_array;
 			}
 		}
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
