@@ -34,7 +34,7 @@ window.addEventListener("message", function (e) {
 			}
 		}
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
-			video_stream_url = video_config_media['streams'][i].url.replace("pl.crunchyroll.com", "fy.v.vrv.co").replace(/mp4.*Policy/, "mp4?Policy");
+			video_stream_url = video_config_media['streams'][i].url.replace("pl.crunchyroll.com", "fy.v.vrv.co").replace(/mp4.*Policy/, "mp4?Policy").replace("_,", "_");
 			break;
 		}
 	}
