@@ -387,11 +387,24 @@ window.addEventListener("message", function (e) {
 					jwplayer().load({
 						file: "https://i.imgur.com/jrkkCU1.mp4"
 					});
-					jwplayer().setControls(false);
+					jwplayer().setControls(true);
 					jwplayer().setConfig({
 						repeat: true
 					});
 					jwplayer().play();
+				}
+				if (e.code == 232600) {
+					jwplayer().load({
+						file: "https://i.imgur.com/jrkkCU1.mp4"
+					});
+					jwplayer().setControls(true);
+					jwplayer().setConfig({
+						repeat: true
+					});
+					jwplayer().play();
+
+					console.log("1080p_mp4: " + video_1080p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"));
+					
 				}
 			});
 			//Fica salvando o tempo do video a cada 5 segundos.
