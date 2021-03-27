@@ -59,7 +59,7 @@ window.addEventListener("message", function (e) {
 		var blob = new Blob([video_m3u8], {
 			type: "text/plain; charset=utf-8"
 		});
-		video_stream_url = URL.createObjectURL(blob) + "#.m3u8";
+		video_stream_url = video_m3u8_array[1];
 	}
 
 	//Pega varias informações pela pagina rss.
