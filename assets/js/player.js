@@ -395,7 +395,7 @@ window.addEventListener("message", function (e) {
 				if (e.code == 232600) {
 
 					jwplayer().setControls(true);					
-					jwplayer().play();
+
 				}
 			});
 			//Fica salvando o tempo do video a cada 5 segundos.
