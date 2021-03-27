@@ -29,8 +29,12 @@ window.addEventListener("message", function (e) {
 	for (var i = 0; i < video_config_media['streams'].length; i++) {
 		if (video_config_media['streams'][i].format == 'trailer_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
 			if (rows_number <= 4) {
-				video_m3u8_array.push(video_config_media['streams'][i].url.replace("clipTo/120000/", "").replace(/mp4.*Policy/, "mp4?Policy").replace("_,", "_").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co"));
+				video_m3u8_array.push(video_config_media['streams'][i].url.replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co"));
 				rows_number++;
+
+				video_stream_url = video_config_media['streams'][i].url.replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co")
+
+
 			}
 		}
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
@@ -124,7 +128,7 @@ window.addEventListener("message", function (e) {
 			playerInstance.setup({
 				"title": episode_title,
 				"description": video_config_media['metadata']['title'],
-				"file": video_stream_url.replace(/mp4.*Policy/, "mp4?Policy").replace("_,", "_"),
+				"file": video_stream_url,
 				"image": video_config_media['thumbnail']['url'],
 				"width": "100%",
 				"height": "100%",
