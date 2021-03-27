@@ -29,12 +29,12 @@ window.addEventListener("message", function (e) {
 	for (var i = 0; i < video_config_media['streams'].length; i++) {
 		if (video_config_media['streams'][i].format == 'trailer_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
 			if (rows_number <= 4) {
-				video_m3u8_array.push(video_config_media['streams'][i].url.replace("clipTo/120000/", "").replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co"));
+				video_m3u8_array.push(video_config_media['streams'][i].url.replace("clipTo/120000/", "").replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "f.v.vrv.co"));
 				rows_number++;
 			}
 		}
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
-			video_stream_url = video_config_media['streams'][i].url.replace("pl.crunchyroll.com", "fy.v.vrv.co");
+			video_stream_url = video_config_media['streams'][i].url.replace("pl.crunchyroll.com", "f.v.vrv.co");
 
 			console.log(video_stream_url);
 
@@ -224,7 +224,7 @@ window.addEventListener("message", function (e) {
 				
 				//Se o episodio não for apenas para premium pega as urls de um jeito mais facil
 				if(is_ep_premium_only == false) {
-					video_dash_playlist_url_old = player_current_playlist.replace("master.m3u8","manifest.mpd").replace(player_current_playlist.split("/")[2], "fy.v.vrv.co").replace("evs1","evs");
+					video_dash_playlist_url_old = player_current_playlist.replace("master.m3u8","manifest.mpd").replace(player_current_playlist.split("/")[2], "f.v.vrv.co").replace("evs1","evs");
 					video_dash_playlist_url = player_current_playlist.replace(player_current_playlist.split("/")[2], "v.vrv.co").replace("evs1", "evs");
 
 					//console.log("Dash Playlist Old: " + video_dash_playlist_url_old);
@@ -280,7 +280,7 @@ window.addEventListener("message", function (e) {
 						success: function (result,status,xhr) {
 							var params_download_link_1080p = htmlDecode(pegaString(xhr.responseText, '.m4s?', '"'));
 							var video_1080p_mp4_url_old = video_1080p_dash_playlist_url.split("_,")[0] + "_" + video_1080p_dash_playlist_url.split(",")[1] + params_download_link_1080p;
-							var video_1080p_mp4_url = video_1080p_mp4_url_old.replace("fy.v.vrv.co", "v.vrv.co").replace("_,", "_");
+							var video_1080p_mp4_url = video_1080p_mp4_url_old.replace("f.v.vrv.co", "v.vrv.co").replace("_,", "_");
 							
 							document.getElementById("1080p_down_url").href = video_1080p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy");
 							setFileSize(video_1080p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy").replace("_,", "_"), "1080p_down_size");
@@ -299,7 +299,7 @@ window.addEventListener("message", function (e) {
 						success: function (result,status,xhr) {
 							var params_download_link_720p = htmlDecode(pegaString(xhr.responseText, '.m4s?', '"'));
 							var video_720p_mp4_url_old = video_720p_dash_playlist_url.split("_,")[0] + "_" + video_720p_dash_playlist_url.split(",")[1] + params_download_link_720p;
-							var video_720p_mp4_url = video_720p_mp4_url_old.replace("fy.v.vrv.co", "v.vrv.co").replace("_,", "_");
+							var video_720p_mp4_url = video_720p_mp4_url_old.replace("f.v.vrv.co", "v.vrv.co").replace("_,", "_");
 							
 							document.getElementById("720p_down_url").href = video_720p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy");
 							setFileSize(video_720p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"), "720p_down_size");
@@ -318,7 +318,7 @@ window.addEventListener("message", function (e) {
 						success: function (result,status,xhr) {
 							var params_download_link_480p = htmlDecode(pegaString(xhr.responseText, '.m4s?', '"'));
 							var video_480p_mp4_url_old = video_480p_dash_playlist_url.split("_,")[0] + "_" + video_480p_dash_playlist_url.split(",")[1] + params_download_link_480p;
-							var video_480p_mp4_url = video_480p_mp4_url_old.replace("fy.v.vrv.co", "v.vrv.co").replace("_,", "_");
+							var video_480p_mp4_url = video_480p_mp4_url_old.replace("f.v.vrv.co", "v.vrv.co").replace("_,", "_");
 							
 							document.getElementById("480p_down_url").href = video_480p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy");
 							setFileSize(video_480p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"), "480p_down_size");
@@ -337,7 +337,7 @@ window.addEventListener("message", function (e) {
 						success: function (result,status,xhr) {
 							var params_download_link_360p = htmlDecode(pegaString(xhr.responseText, '.m4s?', '"'));
 							var video_360p_mp4_url_old = video_360p_dash_playlist_url.split("_,")[0] + "_" + video_360p_dash_playlist_url.split(",")[1] + params_download_link_360p;
-							var video_360p_mp4_url = video_360p_mp4_url_old.replace("fy.v.vrv.co", "v.vrv.co").replace("_,", "_");
+							var video_360p_mp4_url = video_360p_mp4_url_old.replace("f.v.vrv.co", "v.vrv.co").replace("_,", "_");
 							
 							document.getElementById("360p_down_url").href = video_360p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy");
 							setFileSize(video_360p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"), "360p_down_size");
@@ -356,7 +356,7 @@ window.addEventListener("message", function (e) {
 						success: function (result,status,xhr) {
 							var params_download_link_240p = htmlDecode(pegaString(xhr.responseText, '.m4s?', '"'));
 							var video_240p_mp4_url_old = video_240p_dash_playlist_url.split("_,")[0] + "_" + video_240p_dash_playlist_url.split(",")[1] + params_download_link_240p;
-							var video_240p_mp4_url = video_240p_mp4_url_old.replace("fy.v.vrv.co", "v.vrv.co").replace("_,", "_");
+							var video_240p_mp4_url = video_240p_mp4_url_old.replace("f.v.vrv.co", "v.vrv.co").replace("_,", "_");
 							
 							document.getElementById("240p_down_url").href = video_240p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy");
 							setFileSize(video_240p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"), "240p_down_size");
