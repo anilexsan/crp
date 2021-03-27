@@ -34,7 +34,7 @@ window.addEventListener("message", function (e) {
 			}
 		}
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
-			video_stream_url = video_config_media['streams'][i].url.replace("pl.crunchyroll.com", "f.v.vrv.co");
+			video_stream_url = video_config_media['streams'][i].url.replace("pl.crunchyroll.com", "f.v.vrv.co").replace(/mp4.*Policy/, "mp4?Policy");
 			break;
 		}
 	}
@@ -221,8 +221,8 @@ window.addEventListener("message", function (e) {
 				
 				//Se o episodio não for apenas para premium pega as urls de um jeito mais facil
 				if(is_ep_premium_only == false) {
-					video_dash_playlist_url_old = player_current_playlist.replace("master.m3u8","manifest.mpd").replace(player_current_playlist.split("/")[2], "f.v.vrv.co").replace("evs1","evs");
-					video_dash_playlist_url = player_current_playlist.replace(player_current_playlist.split("/")[2], "v.vrv.co").replace("evs1", "evs");
+					video_dash_playlist_url_old = video_stream_url.replace("master.m3u8","manifest.mpd").replace(player_current_playlist.split("/")[2], "f.v.vrv.co").replace("evs1","evs");
+					video_dash_playlist_url = video_stream_url.replace(player_current_playlist.split("/")[2], "v.vrv.co").replace("evs1", "evs");
 
 					//console.log("Dash Playlist Old: " + video_dash_playlist_url_old);
 					//console.log("Dash Playlist: " + video_dash_playlist_url);
