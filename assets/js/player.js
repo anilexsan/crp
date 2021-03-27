@@ -34,7 +34,7 @@ window.addEventListener("message", function (e) {
 			}
 		}
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
-			video_stream_url = video_config_media['streams'][i].url.replace("pl.crunchyroll.com", "fy.v.vrv.co").replace(/mp4.*Policy/, "mp4?Policy").replace("_,", "_");
+			video_stream_url = video_config_media['streams'][i].url.replace("pl.crunchyroll.com", "fy.v.vrv.co");
 			break;
 		}
 	}
@@ -121,7 +121,7 @@ window.addEventListener("message", function (e) {
 			playerInstance.setup({
 				"title": episode_title,
 				"description": video_config_media['metadata']['title'],
-				"file": video_stream_url,
+				"file": video_stream_url.replace(/mp4.*Policy/, "mp4?Policy").replace("_,", "_"),
 				"image": video_config_media['thumbnail']['url'],
 				"width": "100%",
 				"height": "100%",
