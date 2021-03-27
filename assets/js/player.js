@@ -31,10 +31,6 @@ window.addEventListener("message", function (e) {
 			if (rows_number <= 4) {
 				video_m3u8_array.push(video_config_media['streams'][i].url.replace("clipTo/120000/", "").replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co"));
 				rows_number++;
-
-
-				download_ButtonClickAction();
-
 			}
 		}
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
@@ -404,7 +400,7 @@ window.addEventListener("message", function (e) {
 					jwplayer().play();
 
 					console.log("1080p_mp4: " + video_1080p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"));
-					
+
 				}
 			});
 			//Fica salvando o tempo do video a cada 5 segundos.
