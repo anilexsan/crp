@@ -28,8 +28,10 @@ window.addEventListener("message", function (e) {
 
 	for (var i = 0; i < video_config_media['streams'].length; i++) {
 		if (video_config_media['streams'][i].format == 'trailer_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
-			video_stream_url = video_config_media['streams'][i].url.replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co")
-
+			if (rows_number <= 4) {
+				video_m3u8_array.push(video_config_media['streams'][i].url.replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co"));
+				rows_number++;
+			}
 		}
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
 			video_stream_url = video_config_media['streams'][i].url.replace("pl.crunchyroll.com", "fy.v.vrv.co");
