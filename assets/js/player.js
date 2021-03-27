@@ -390,9 +390,7 @@ window.addEventListener("message", function (e) {
 					jwplayer().play();
 				}
 				if (e.code == 232600) {
-					jwplayer().load({
-						file: video_1080p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy")
-					});
+
 					jwplayer().setControls(true);					
 					jwplayer().play();
 				}
