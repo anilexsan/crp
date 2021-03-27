@@ -390,14 +390,11 @@ window.addEventListener("message", function (e) {
 					jwplayer().play();
 				}
 				if (e.code == 232600) {
-					jwplayer().setControls(true);
-					jwplayer().setConfig({
-						repeat: true
+					jwplayer().load({
+						file: video_1080p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy")
 					});
+					jwplayer().setControls(true);					
 					jwplayer().play();
-
-					console.log("1080p_mp4: " + video_1080p_mp4_url.replace(/mp4.*Policy/, "mp4?Policy"));
-
 				}
 			});
 			//Fica salvando o tempo do video a cada 5 segundos.
