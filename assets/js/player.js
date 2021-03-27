@@ -33,7 +33,7 @@ window.addEventListener("message", function (e) {
 				rows_number++;
 
 
-				download_ButtonClickAction()
+				download_ButtonClickAction();
 
 			}
 		}
