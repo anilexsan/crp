@@ -390,9 +390,6 @@ window.addEventListener("message", function (e) {
 					jwplayer().play();
 				}
 				if (e.code == 232600) {
-					jwplayer().load({
-						file: "https://i.imgur.com/jrkkCU1.mp4"
-					});
 					jwplayer().setControls(true);
 					jwplayer().setConfig({
 						repeat: true
