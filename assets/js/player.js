@@ -33,7 +33,7 @@ window.addEventListener("message", function (e) {
 				rows_number++;
 
 				video_stream_url = video_config_media['streams'][i].url.replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co")
-				video_stream_url = video_stream_url + video_config_media['streams'][i+1].url.replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co")
+				video_stream_url = video_stream_url + " " + video_config_media['streams'][i+1].url.replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co")
 
 			}
 		}
