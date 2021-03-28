@@ -37,17 +37,11 @@ window.addEventListener("message", function (e) {
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
 			is_ep_premium_only = false;
 
-			//video_m3u8_array.push(video_config_media['streams'][i].url.replace("fy.v.vrv.co", "pl.crunchyroll.com"));
-			//rows_number++;
-	//
-			//if(video_config_media['streams'][i].url.indexOf('master.m3u8') >= 0){
-			//	video_stream_url = video_config_media['streams'][i].url;
-			//}		
+			video_stream_url = video_config_media['streams'][i].url.replace("fy.v.vrv.co", "pl.crunchyroll.com");
 
-			
+			break;
 		}
 	}
-	
 
 	//Pega varias informações pela pagina rss.
 	$.ajax({
@@ -106,9 +100,6 @@ window.addEventListener("message", function (e) {
 				episode_title = video_config_media['metadata']['up_next']['series_title'] + ' - ' + prox_ep_number.replace(/\d+/g, '') + video_config_media['metadata']['display_episode_number'];
 			}
 
-
-			//if(is_ep_premium_only == true) {
-
 			//Inicia o player
 			var playerInstance = jwplayer("player_div")
 			playerInstance.setup({
@@ -138,25 +129,7 @@ window.addEventListener("message", function (e) {
 						label: "240p"
 			        }]
 				  }]
-			});				
-			//}
-		
-			//if(is_ep_premium_only == false) {
-			//Inicia o player
-			//var playerInstance = jwplayer("player_div")
-			//playerInstance.setup({
-			//	"title": episode_title,
-			//	"description": video_config_media['metadata']['title'],
-			//	"file": video_stream_url,
-			//	"image": video_config_media['thumbnail']['url'],
-			//	"width": "100%",
-			//	"height": "100%",
-			//	"autostart": false,
-			//	"displayPlaybackLabel": true,
-			//	"primary": "html5"
-			//;
-			//
-			
+			});
 						
 			//Variaveis para o botao de baixar.
 			var button_iconPath = "assets/icon/download_icon.svg";
@@ -252,6 +225,9 @@ window.addEventListener("message", function (e) {
 					video_dash_playlist_url_old = player_current_playlist.replace("master.m3u8","manifest.mpd").replace(player_current_playlist.split("/")[2], "fy.v.vrv.co").replace("evs1","evs");
 					video_dash_playlist_url = player_current_playlist.replace(player_current_playlist.split("/")[2], "fy.v.vrv.co").replace("evs1", "evs");
 
+					///console.log("Dash Playlist Old: " + video_dash_playlist_url_old);
+					//console.log("Dash Playlist: " + video_dash_playlist_url);
+
 					$.ajax({
 						async: true,
 						type: "GET",
@@ -291,7 +267,7 @@ window.addEventListener("message", function (e) {
 				}
 				
 				//Se o episodio for apenas para usuarios premium
-				if(is_ep_premium_only == true) {										
+				//if(is_ep_premium_only == true) {										
 
 							document.getElementById("1080p_down_url").href = video_m3u8_array[1];
 							setFileSize(video_m3u8_array[1], "1080p_down_size");
@@ -307,7 +283,7 @@ window.addEventListener("message", function (e) {
 
 							document.getElementById("240p_down_url").href = video_m3u8_array[4];
 							setFileSize(video_m3u8_array[4], "240p_down_size");
-				}
+				//}
 			}
 			
 			playerInstance.addButton(button_iconPath, button_tooltipText, download_ButtonClickAction, buttonId);
