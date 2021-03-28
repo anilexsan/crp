@@ -34,41 +34,48 @@ window.addEventListener("message", function (e) {
 
 	for (var i = 0; i < video_config_media['streams'].length; i++) {
 		if (video_config_media['streams'][i].format == 'trailer_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
-			is_ep_premium_only = true;
 				
 			video_m3u8_array.push(video_config_media['streams'][i].url.replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co"));
 			rows_number++;
 
+			video_1080p = video_m3u8_array[1];
+			video_720p = video_m3u8_array[0];
+			video_480p = video_m3u8_array[2];
+			video_360p = video_m3u8_array[3];
+			video_240p = video_m3u8_array[4];
+
 		}
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
-			is_ep_premium_only = false;
+
 
 			video_stream_url = video_config_media['streams'][i].url.replace("pl.crunchyroll.com", "fy.v.vrv.co");
 			console.log(video_stream_url);
 
+			video_stream_url = player_current_playlist.replace("master.m3u8","manifest.mpd").replace(player_current_playlist.split("/")[2], "fy.v.vrv.co").replace("evs1","evs");
+			video_dash_playlist_url = player_current_playlist.replace(player_current_playlist.split("/")[2], "fy.v.vrv.co").replace("evs1", "evs");
+
+			$.ajax({
+				async: true,
+				type: "GET",
+				url: video_stream_url,
+				success: function (result,status,xhr) {
+					
+					video_1080p = video_dash_playlist_url.split(",")[2];
+					video_720p = video_dash_playlist_url.split(",")[1];
+					video_480p = video_dash_playlist_url.split(",")[3];
+					video_360p = video_dash_playlist_url.split(",")[4];
+					video_240p = video_dash_playlist_url.split(",")[5];											
+																																																						
+			}
+			});
 			break;
+
 		}
 	}
-	//console.log(video_m3u8_array);
 
-	if(is_ep_premium_only == true) {
 
-		video_1080p = video_m3u8_array[1];
-		video_720p = video_m3u8_array[0];
-		video_480p = video_m3u8_array[2];
-		video_360p = video_m3u8_array[3];
-		video_240p = video_m3u8_array[4];
-	}
-
-	if(is_ep_premium_only == false) {
-
-		video_1080p = video_stream_url;
-		video_720p = video_stream_url;
-		video_480p = video_stream_url;
-		video_360p = video_stream_url;
-		video_240p = video_stream_url;
-	}
-
+	
+					
 	//Pega varias informações pela pagina rss.
 	$.ajax({
 		async: true,
@@ -250,9 +257,6 @@ window.addEventListener("message", function (e) {
 				if(is_ep_premium_only == false) {
 					video_dash_playlist_url_old = player_current_playlist.replace("master.m3u8","manifest.mpd").replace(player_current_playlist.split("/")[2], "fy.v.vrv.co").replace("evs1","evs");
 					video_dash_playlist_url = player_current_playlist.replace(player_current_playlist.split("/")[2], "fy.v.vrv.co").replace("evs1", "evs");
-
-					///console.log("Dash Playlist Old: " + video_dash_playlist_url_old);
-					//console.log("Dash Playlist: " + video_dash_playlist_url);
 
 					$.ajax({
 						async: true,
