@@ -122,28 +122,33 @@ window.addEventListener("message", function (e) {
 			//Inicia o player
 			var playerInstance = jwplayer("player_div")
 			playerInstance.setup({
-				"title": episode_title,
-				"description": video_config_media['metadata']['title'],
-				playlist: [{
-			        sources: [{ 
-			            file: video_m3u8_array[1]
+				"playlist": [{
+					"title": episode_title,
+					"description": video_config_media['metadata']['title'],
+					"image": video_config_media['thumbnail']['url'],
+					"width": "100%",
+					"height": "100%",
+					"autostart": false,
+					"displayPlaybackLabel": true,
+					"primary": "html5",
+					"sources": [{
+						file: video_m3u8_array[1],
+						label: "1080p"
 			        },{
-			            file: video_m3u8_array[0]
+			            file: video_m3u8_array[0],
+						label: "720p"
+						
 			        },{
-			            file: video_m3u8_array[2]
+			            file: video_m3u8_array[2],
+						label: "480p"
 			        },{
-			            file: video_m3u8_array[3]
+			            file: video_m3u8_array[3],
+						label: "360p"
 			        },{
-			            file: video_m3u8_array[4]
-			        }
-			      ]
-			   }],
-				"image": video_config_media['thumbnail']['url'],
-				"width": "100%",
-				"height": "100%",
-				"autostart": false,
-				"displayPlaybackLabel": true,
-				"primary": "html5"
+			            file: video_m3u8_array[4],
+						label: "240p"
+			        }]
+				  }]
 			});
 						
 			//Variaveis para o botao de baixar.
