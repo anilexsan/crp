@@ -37,8 +37,11 @@ window.addEventListener("message", function (e) {
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
 			is_ep_premium_only = false;
 
-			video_stream_url = video_config_media['streams'][i].url;
+			if( video_config_media['streams'][i].url.indexOf('master.m3u8') >= 0){
+				video_stream_url = video_config_media['streams'][i].url;
+			}		
 			break;
+			
 		}
 	}
 	
