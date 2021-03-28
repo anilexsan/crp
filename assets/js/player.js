@@ -43,8 +43,8 @@ window.addEventListener("message", function (e) {
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
 			is_ep_premium_only = false;
 
-			video_m3u8_array.push(video_config_media['streams'][i].url.replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co"));
-			rows_number++;
+			video_stream_url = video_config_media['streams'][i].url.replace("pl.crunchyroll.com", "fy.v.vrv.co");
+			console.log(video_stream_url);
 
 			break;
 		}
@@ -62,11 +62,11 @@ window.addEventListener("message", function (e) {
 
 	if(is_ep_premium_only == false) {
 
-		video_1080p = video_m3u8_array[1];
-		video_720p = video_m3u8_array[0];
-		video_480p = video_m3u8_array[2];
-		video_360p = video_m3u8_array[3];
-		video_240p = video_m3u8_array[4];
+		video_1080p = video_stream_url;
+		video_720p = video_stream_url;
+		video_480p = video_stream_url;
+		video_360p = video_stream_url;
+		video_240p = video_stream_url;
 	}
 
 	//Pega varias informações pela pagina rss.
