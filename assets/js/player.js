@@ -44,9 +44,6 @@ window.addEventListener("message", function (e) {
 			is_ep_premium_only = false;
 
 			video_stream_url = video_config_media['streams'][i].url;
-			console.log(video_stream_url);
-
-			break;
 			
 		}
 	}
@@ -141,8 +138,7 @@ window.addEventListener("message", function (e) {
 						label: "240p"
 			        }]
 				  }]
-			});
-				
+			});				
 			}
 		
 			if(is_ep_premium_only == false) {
