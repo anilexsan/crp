@@ -19,6 +19,12 @@ window.addEventListener("message", function (e) {
 	var video_dash_playlist_url_old = "";
 	var video_dash_playlist_url = "";
 
+	var video_1080p = "";
+	var video_720p = "";
+	var video_480p = "";
+	var video_360p = "";
+	var video_240p = "";
+
 	if (user_lang == "enUS") {
 		var series_rss = "https://www.crunchyroll.com/" + series_url.split("/")[3] + ".rss";
 	} else {
@@ -28,38 +34,39 @@ window.addEventListener("message", function (e) {
 
 	for (var i = 0; i < video_config_media['streams'].length; i++) {
 		if (video_config_media['streams'][i].format == 'trailer_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
-
-				video_m3u8_array.push(video_config_media['streams'][i].url.replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co"));
-				rows_number++;
+			is_ep_premium_only = true;
+				
+			video_m3u8_array.push(video_config_media['streams'][i].url.replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co"));
+			rows_number++;
 
 		}
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
-			video_stream_url = video_config_media['streams'][i].url.replace("pl.crunchyroll.com", "fy.v.vrv.co");
+			is_ep_premium_only = false;
 
-			console.log(video_stream_url);
+			video_m3u8_array.push(video_config_media['streams'][i].url.replace(/mp4.*Policy/, "mp4?Policy").replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co"));
+			rows_number++;
 
 			break;
 		}
 	}
 	//console.log(video_m3u8_array);
 
-	video_m3u8 = '#EXTM3U' +
-		'\n#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=4112345,RESOLUTION=1280x720,FRAME-RATE=23.974,CODECS="avc1.640028,mp4a.40.2"' +
-		'\n' + video_m3u8_array[0] +
-		'\n#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=8098235,RESOLUTION=1920x1080,FRAME-RATE=23.974,CODECS="avc1.640028,mp4a.40.2"' +
-		'\n' + video_m3u8_array[1] +
-		'\n#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2087088,RESOLUTION=848x480,FRAME-RATE=23.974,CODECS="avc1.4d401f,mp4a.40.2"' +
-		'\n' + video_m3u8_array[2] +
-		'\n#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1090461,RESOLUTION=640x360,FRAME-RATE=23.974,CODECS="avc1.4d401e,mp4a.40.2"' +
-		'\n' + video_m3u8_array[3] +
-		'\n#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=559942,RESOLUTION=428x240,FRAME-RATE=23.974,CODECS="avc1.42c015,mp4a.40.2"' +
-		'\n' + video_m3u8_array[4];
+	if(is_ep_premium_only == true) {
 
-	if (video_stream_url == "") {
-		var blob = new Blob([video_m3u8], {
-			type: "text/plain; charset=utf-8"
-		});
-		video_stream_url = URL.createObjectURL(blob) + "#.m3u8";
+		video_1080p = video_m3u8_array[1];
+		video_720p = video_m3u8_array[0];
+		video_480p = video_m3u8_array[2];
+		video_360p = video_m3u8_array[3];
+		video_240p = video_m3u8_array[4];
+	}
+
+	if(is_ep_premium_only == false) {
+
+		video_1080p = video_m3u8_array[1];
+		video_720p = video_m3u8_array[0];
+		video_480p = video_m3u8_array[2];
+		video_360p = video_m3u8_array[3];
+		video_240p = video_m3u8_array[4];
 	}
 
 	//Pega varias informações pela pagina rss.
@@ -231,6 +238,13 @@ window.addEventListener("message", function (e) {
 				
 				//console.log("Playlist Atual:" + player_current_playlist);
 				
+				//Verifica se o ep é so pra usuarios premium
+				if(jwplayer().getPlaylist()[0].file.indexOf('blob:') !== -1) {
+					is_ep_premium_only = true;
+				}else{
+					is_ep_premium_only = false;
+				}
+				
 				//console.log("is_ep_premium_only: " + is_ep_premium_only);
 				
 				//Se o episodio não for apenas para premium pega as urls de um jeito mais facil
@@ -280,7 +294,7 @@ window.addEventListener("message", function (e) {
 				}
 				
 				//Se o episodio for apenas para usuarios premium
-									
+				if(is_ep_premium_only == true) {										
 
 							document.getElementById("1080p_down_url").href = video_m3u8_array[1];
 							setFileSize(video_m3u8_array[1], "1080p_down_size");
@@ -296,7 +310,7 @@ window.addEventListener("message", function (e) {
 
 							document.getElementById("240p_down_url").href = video_m3u8_array[4];
 							setFileSize(video_m3u8_array[4], "240p_down_size");
-
+				}
 			}
 			
 			playerInstance.addButton(button_iconPath, button_tooltipText, download_ButtonClickAction, buttonId);
