@@ -287,23 +287,22 @@ window.addEventListener("message", function (e) {
 				}
 				
 				//Se o episodio for apenas para usuarios premium
-				if(is_ep_premium_only == true) {
-										
+				if(is_ep_premium_only == true) {										
 
 							document.getElementById("1080p_down_url").href = video_m3u8_array[1];
 							setFileSize(video_m3u8_array[1], "1080p_down_size");
 	
-							document.getElementById("720p_down_url").href = video_m3u8_array[1];
-							setFileSize(video_m3u8_array[1], "720p_down_size");
+							document.getElementById("720p_down_url").href = video_m3u8_array[0];
+							setFileSize(video_m3u8_array[0], "720p_down_size");
 
-							document.getElementById("480p_down_url").href = video_m3u8_array[1];
-							setFileSize(video_m3u8_array[1], "480p_down_size");
+							document.getElementById("480p_down_url").href = video_m3u8_array[2];
+							setFileSize(video_m3u8_array[2], "480p_down_size");
 
-							document.getElementById("360p_down_url").href = video_m3u8_array[1];
-							setFileSize(video_m3u8_array[1], "360p_down_size");
+							document.getElementById("360p_down_url").href = video_m3u8_array[3];
+							setFileSize(video_m3u8_array[3], "360p_down_size");
 
-							document.getElementById("240p_down_url").href = video_m3u8_array[1];
-							setFileSize(video_m3u8_array[1], "240p_down_size");
+							document.getElementById("240p_down_url").href = video_m3u8_array[4];
+							setFileSize(video_m3u8_array[4], "240p_down_size");
 				}
 			}
 			
