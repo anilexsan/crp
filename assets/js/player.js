@@ -19,12 +19,6 @@ window.addEventListener("message", function (e) {
 	var video_dash_playlist_url_old = "";
 	var video_dash_playlist_url = "";
 
-	var video_1080p = "";
-	var video_720p = "";
-	var video_480p = "";
-	var video_360p = "";
-	var video_240p = "";
-
 	if (user_lang == "enUS") {
 		var series_rss = "https://www.crunchyroll.com/" + series_url.split("/")[3] + ".rss";
 	} else {
