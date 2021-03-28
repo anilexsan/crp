@@ -37,10 +37,13 @@ window.addEventListener("message", function (e) {
 		if (video_config_media['streams'][i].format == 'adaptive_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
 			is_ep_premium_only = false;
 
-			if( video_config_media['streams'][i].url.indexOf('master.m3u8') >= 0){
+			video_m3u8_array.push(video_config_media['streams'][i].url.replace(video_config_media['streams'][i].url.split("/")[2], "fy.v.vrv.co"));
+			rows_number++;
+	
+			if(video_config_media['streams'][i].url.indexOf('master.m3u8') >= 0){
 				video_stream_url = video_config_media['streams'][i].url;
 			}		
-			break;
+
 			
 		}
 	}
@@ -104,7 +107,7 @@ window.addEventListener("message", function (e) {
 			}
 
 
-			if(is_ep_premium_only == true) {
+			//if(is_ep_premium_only == true) {
 
 			//Inicia o player
 			var playerInstance = jwplayer("player_div")
@@ -136,23 +139,23 @@ window.addEventListener("message", function (e) {
 			        }]
 				  }]
 			});				
-			}
+			//}
 		
-			if(is_ep_premium_only == false) {
+			//if(is_ep_premium_only == false) {
 			//Inicia o player
-			var playerInstance = jwplayer("player_div")
-			playerInstance.setup({
-				"title": episode_title,
-				"description": video_config_media['metadata']['title'],
-				"file": video_stream_url,
-				"image": video_config_media['thumbnail']['url'],
-				"width": "100%",
-				"height": "100%",
-				"autostart": false,
-				"displayPlaybackLabel": true,
-				"primary": "html5"
-			});
-			}
+			//var playerInstance = jwplayer("player_div")
+			//playerInstance.setup({
+			//	"title": episode_title,
+			//	"description": video_config_media['metadata']['title'],
+			//	"file": video_stream_url,
+			//	"image": video_config_media['thumbnail']['url'],
+			//	"width": "100%",
+			//	"height": "100%",
+			//	"autostart": false,
+			//	"displayPlaybackLabel": true,
+			//	"primary": "html5"
+			//;
+			//
 			
 						
 			//Variaveis para o botao de baixar.
