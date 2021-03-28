@@ -231,13 +231,6 @@ window.addEventListener("message", function (e) {
 				
 				//console.log("Playlist Atual:" + player_current_playlist);
 				
-				//Verifica se o ep é so pra usuarios premium
-				if(jwplayer().getPlaylist()[0].file.indexOf('blob:') !== -1) {
-					is_ep_premium_only = true;
-				}else{
-					is_ep_premium_only = false;
-				}
-				
 				//console.log("is_ep_premium_only: " + is_ep_premium_only);
 				
 				//Se o episodio não for apenas para premium pega as urls de um jeito mais facil
@@ -287,7 +280,7 @@ window.addEventListener("message", function (e) {
 				}
 				
 				//Se o episodio for apenas para usuarios premium
-				if(is_ep_premium_only == true) {										
+									
 
 							document.getElementById("1080p_down_url").href = video_m3u8_array[1];
 							setFileSize(video_m3u8_array[1], "1080p_down_size");
@@ -303,7 +296,7 @@ window.addEventListener("message", function (e) {
 
 							document.getElementById("240p_down_url").href = video_m3u8_array[4];
 							setFileSize(video_m3u8_array[4], "240p_down_size");
-				}
+
 			}
 			
 			playerInstance.addButton(button_iconPath, button_tooltipText, download_ButtonClickAction, buttonId);
