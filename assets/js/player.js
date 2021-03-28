@@ -145,13 +145,7 @@ window.addEventListener("message", function (e) {
 				"displayPlaybackLabel": true,
 				"primary": "html5"
 			});
-			
-			var playerInstance = jwplayer("myElement");
-			playerInstance.setup({
-			
-			});
-
-			
+						
 			//Variaveis para o botao de baixar.
 			var button_iconPath = "assets/icon/download_icon.svg";
 			var button_tooltipText = "Baixar Vídeo";
