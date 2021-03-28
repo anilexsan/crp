@@ -139,20 +139,19 @@ window.addEventListener("message", function (e) {
 					"displayPlaybackLabel": true,
 					"primary": "html5",
 					"sources": [{
-						file: video_m3u8_array[1],
+						file: video_1080,
 						label: "1080p"
 			        },{
-			            file: video_m3u8_array[0],
-						label: "720p"
-						
+			            file: video_720p,
+						label: "720p"						
 			        },{
-			            file: video_m3u8_array[2],
+			            file: video_480p,
 						label: "480p"
 			        },{
-			            file: video_m3u8_array[3],
+			            file: video_360p,
 						label: "360p"
 			        },{
-			            file: video_m3u8_array[4],
+			            file: video_240p,
 						label: "240p"
 			        }]
 				  }]
