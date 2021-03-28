@@ -38,7 +38,7 @@ window.addEventListener("message", function (e) {
 			is_ep_premium_only = false;
 
 			video_stream_url = video_config_media['streams'][i].url;
-			
+			break;
 		}
 	}
 	
