@@ -59,7 +59,7 @@ window.addEventListener("message", function (e) {
 		var blob = new Blob([video_m3u8], {
 			type: "text/plain; charset=utf-8"
 		});
-		video_stream_url = video_m3u8_array[1];
+		video_stream_url = URL.createObjectURL(blob) + "#.m3u8";
 	}
 
 	//Pega varias informações pela pagina rss.
@@ -124,7 +124,20 @@ window.addEventListener("message", function (e) {
 			playerInstance.setup({
 				"title": episode_title,
 				"description": video_config_media['metadata']['title'],
-				"file": video_stream_url,
+				playlist: [{
+			        sources: [{ 
+			            file: video_m3u8_array[1]
+			        },{
+			            file: video_m3u8_array[0]
+			        },{
+			            file: video_m3u8_array[2]
+			        },{
+			            file: video_m3u8_array[3]
+			        },{
+			            file: video_m3u8_array[4]
+			        }
+			      ]
+			   }],
 				"image": video_config_media['thumbnail']['url'],
 				"width": "100%",
 				"height": "100%",
@@ -132,6 +145,12 @@ window.addEventListener("message", function (e) {
 				"displayPlaybackLabel": true,
 				"primary": "html5"
 			});
+			
+			var playerInstance = jwplayer("myElement");
+			playerInstance.setup({
+			
+			});
+
 			
 			//Variaveis para o botao de baixar.
 			var button_iconPath = "assets/icon/download_icon.svg";
@@ -227,7 +246,7 @@ window.addEventListener("message", function (e) {
 					video_dash_playlist_url_old = player_current_playlist.replace("master.m3u8","manifest.mpd").replace(player_current_playlist.split("/")[2], "fy.v.vrv.co").replace("evs1","evs");
 					video_dash_playlist_url = player_current_playlist.replace(player_current_playlist.split("/")[2], "fy.v.vrv.co").replace("evs1", "evs");
 
-					//console.log("Dash Playlist Old: " + video_dash_playlist_url_old);
+					///console.log("Dash Playlist Old: " + video_dash_playlist_url_old);
 					//console.log("Dash Playlist: " + video_dash_playlist_url);
 
 					$.ajax({
